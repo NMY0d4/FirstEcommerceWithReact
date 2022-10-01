@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import CategoriesPilot from "./../../components/categories-pilot/categories-pilot.component";
 
 const Home = () => {
@@ -28,7 +29,11 @@ const Home = () => {
             imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
         },
     ];
-    return <CategoriesPilot categories={categories} />;
+    return (
+        <Fragment>
+            <CategoriesPilot categories={categories} />;
+        </Fragment>
+    );
 };
 
 export default Home;
