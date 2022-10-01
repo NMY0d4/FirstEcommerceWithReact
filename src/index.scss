@@ -14,7 +14,7 @@
 
 html {
     box-sizing: border-box;
-    // font-size: 62.5%; // 1rem = 10px/16px(base in nav) = 62.5% for work with rem
+    font-size: 62.5%; // 1rem = 10px/16px(base in nav) = 62.5% for work with rem
 }
 
 body {
@@ -22,9 +22,5 @@ body {
     font-family: "Manrope", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+    font-size: 1.3rem;
 }
