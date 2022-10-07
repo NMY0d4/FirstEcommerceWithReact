@@ -1,8 +1,13 @@
-.sign-up-container {
+.sign-in-container {
     display: flex;
     flex-direction: column;
     width: 40rem;
     h2 {
         margin: 1rem 0;
     }
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
 }

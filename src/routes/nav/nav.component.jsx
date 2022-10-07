@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as GmwebLogo } from "../../assets/crown.svg";
 import "./nav.styles.scss";
 
-const Navigation = () => {
+const Nav = () => {
     return (
         <Fragment>
             <div className="navigation">
@@ -14,8 +14,8 @@ const Navigation = () => {
                     <Link className="nav-link" to="/shop">
                         SHOP
                     </Link>
-                    <Link className="nav-link" to="/Sign-In">
-                        Sign-In
+                    <Link className="nav-link" to="/authentication">
+                        Authentication
                     </Link>
                 </div>
             </div>
@@ -25,4 +25,4 @@ const Navigation = () => {
     );
 };
 
-export default Navigation;
+export default Nav;
