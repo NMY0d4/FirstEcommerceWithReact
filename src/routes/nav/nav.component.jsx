@@ -1,9 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as GmwebLogo } from "../../assets/crown.svg";
+import { UserContext } from "../../contexts/user.context";
+
 import "./nav.styles.scss";
 
 const Nav = () => {
+    const { currentUser } = useContext(UserContext);
+    console.log(currentUser);
     return (
         <Fragment>
             <div className="navigation">
@@ -15,7 +19,7 @@ const Nav = () => {
                         SHOP
                     </Link>
                     <Link className="nav-link" to="/authentication">
-                        Authentication
+                        AUTHENTIFICATION
                     </Link>
                 </div>
             </div>
