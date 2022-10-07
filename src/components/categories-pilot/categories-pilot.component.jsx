@@ -1,5 +1,5 @@
 import React from "react";
-import "./categories-pilot.component.scss";
+import "./categories-pilot.styles.scss";
 import CategoryItem from "../category-item/category-item.component";
 
 const CategoriesPilot = ({ categories }) => {
