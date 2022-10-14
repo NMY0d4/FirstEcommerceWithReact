@@ -1,0 +1,28 @@
+table {
+    margin-top: 5rem;
+    width: 100%;
+    font-size: 1.8rem;
+    hr {
+        margin: 1rem;
+    }
+    tr {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        th,
+        td {
+            img {
+                object-fit: cover;
+            }
+            width: 20%;
+            text-align: center;
+            span {
+                margin: 1rem;
+                font-weight: bold;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
