@@ -6,3 +6,7 @@ export const AuthenticationController = styled.div`
     justify-content: space-between;
     margin: 3rem auto;
 `;
+
+export const H2 = styled.h2`
+    margin: 1rem 0;
+`;
