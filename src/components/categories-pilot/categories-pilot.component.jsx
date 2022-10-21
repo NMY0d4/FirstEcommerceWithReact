@@ -1,14 +1,15 @@
 import React from "react";
-import "./categories-pilot.styles.scss";
+
 import CategoryItem from "../category-item/category-item.component";
+import { CategoriesPilotStyle } from "./categories-pilot.styles";
 
 const CategoriesPilot = ({ categories }) => {
     return (
-        <div className="categories-pilot">
+        <CategoriesPilotStyle>
             {categories.map(({ title, id, imageUrl }) => (
                 <CategoryItem title={title} imageUrl={imageUrl} key={id} />
             ))}
-        </div>
+        </CategoriesPilotStyle>
     );
 };
 

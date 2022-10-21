@@ -1,4 +1,6 @@
-.category-container {
+import styled from "styled-components";
+
+export const CategoryContainer = styled.div`
     min-width: 30%;
     height: 32rem;
     flex: 1 1 auto;
@@ -65,4 +67,4 @@
             font-size: 1.6rem;
         }
     }
-}
+`;
