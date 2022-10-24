@@ -4,7 +4,7 @@ import CategoriesPilot from "./../../components/categories-pilot/categories-pilo
 const Home = () => {
     return (
         <Fragment>
-            <CategoriesPilot />;
+            <CategoriesPilot />
         </Fragment>
     );
 };

@@ -9,9 +9,9 @@ import {
 const CategoryItem = ({ categories }) => {
     const { title, imageUrl, route } = categories;
     return (
-        <CategoryContainer>
+        <CategoryContainer to={route}>
             <BackgroundImage imageUrl={imageUrl} />
-            <CategoryBodyContainer to={route}>
+            <CategoryBodyContainer>
                 <h2>{title}</h2>
                 <p>Shop Now</p>
             </CategoryBodyContainer>

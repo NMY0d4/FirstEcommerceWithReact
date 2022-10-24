@@ -9,7 +9,7 @@ export const BackgroundImage = styled.div`
     background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
-export const CategoryBodyContainer = styled(Link)`
+export const CategoryBodyContainer = styled.div`
     height: 9rem;
     padding: 0 2.5rem;
     display: flex;
@@ -35,7 +35,7 @@ export const CategoryBodyContainer = styled(Link)`
     }
 `;
 
-export const CategoryContainer = styled.div`
+export const CategoryContainer = styled(Link)`
     min-width: 30%;
     height: 32rem;
     flex: 1 1 auto;
