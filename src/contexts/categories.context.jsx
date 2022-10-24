@@ -16,15 +16,10 @@ export const CategoriesProvider = ({ children }) => {
     useEffect(() => {
         const getCategoriesMap = async () => {
             const categoryMap = await getCategoriesAndDocuments();
-            // console.log(categoryMap);
             setCategoriesMap(categoryMap);
         };
         getCategoriesMap();
     }, []);
-
-    // useEffect(() => {
-    //     addCollectionAndDocuments("categories", SHOP_DATA);
-    // }, []);
 
     const value = { categoriesMap };
     return (
