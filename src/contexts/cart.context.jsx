@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useReducer, useEffect } from "react";
 
 export const CartContext = createContext({
     isCartOpen: false,
@@ -57,11 +57,50 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
 const removeProductItem = (cartItems, cartProductToRemove) =>
     cartItems.filter((cartItem) => cartItem.id !== cartProductToRemove.id);
 
+const CART_ACTION_TYPE = {
+    ADD_ITEM_TO_CART: "ADD_PRODUCT_ITEM",
+    REMOVE_ITEM_FROM_CART: "REMOVE_PRODUCT_ITEM",
+    REMOVE_PRODUCT_FROM_CART: "REMOVE_PRODUCT_FROM_CART",
+    TOGGLE_IS_CART_OPEN: "TOGGLE_IS_CART_OPEN",
+};
+
+const cartReducer = (state, action) => {
+    const { type, payload } = action;
+
+    switch (type) {
+        case CART_ACTION_TYPE.ADD_ITEM_TO_CART:
+            state.cartItems.reduce(
+                (totalItems, item) => totalItems + item.quantity,
+                0
+            );
+            break;
+
+        case CART_ACTION_TYPE.REMOVE_ITEM_FROM_CART:
+            return console.log("remove item from cart");
+        case CART_ACTION_TYPE.REMOVE_PRODUCT_FROM_CART:
+            return console.log("remove product from cart");
+        case CART_ACTION_TYPE.TOGGLE_IS_CART_OPEN:
+            return console.log("toggle cart open");
+        default:
+            throw new Error(`Unhandled type ${type} in cartReducer`);
+    }
+};
+
+const INITIAL_STATE = {
+    isCartOpen: false,
+    cartItems: [],
+    cartCount: 0,
+    cartTotal: 0,
+};
+
+// PROVIDER ---------------------------------------------------------------------
 export const CartProvider = ({ children }) => {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [cartCount, setCartCount] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
+
+    // const [{ cartItems }, dispatch] = useReducer(cartReducer, INITIAL_STATE);
 
     useEffect(() => {
         setCartCount(
