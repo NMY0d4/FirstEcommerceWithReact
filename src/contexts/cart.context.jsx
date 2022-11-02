@@ -26,8 +26,7 @@ const CART_ACTION_TYPE = {
 
 const cartReducer = (state, action) => {
     const { type, payload } = action;
-    const { isCartOpen, cartItems } = state;
-    console.log(cartItems);
+    const { isCartOpen } = state;
 
     switch (type) {
         case CART_ACTION_TYPE.SET_CART_ITEMS:
