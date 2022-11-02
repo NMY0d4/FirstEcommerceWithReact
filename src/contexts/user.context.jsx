@@ -1,15 +1,15 @@
-import { createContext, useEffect, useReducer } from "react";
-import {
-    createUserDocumentFromAuth,
-    onAuthStateChangedListener,
-} from "../utils/firebase/firebase.utils";
-import { createAction } from "../utils/reducer/reducer.utils";
+// import { createContext, useEffect, useReducer } from "react";
+// import {
+//     createUserDocumentFromAuth,
+//     onAuthStateChangedListener,
+// } from "../utils/firebase/firebase.utils";
+// import { createAction } from "../utils/reducer/reducer.utils";
 
-// as the actual value you want to access
-export const UserContext = createContext({
-    setCurrentUser: () => null,
-    currentUser: null,
-});
+// // as the actual value you want to access
+// export const UserContext = createContext({
+//     setCurrentUser: () => null,
+//     currentUser: null,
+// });
 
 // export const UserProvider = ({ children }) => {
 //     // USE REDUCER
