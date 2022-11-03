@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import {
     createUserDocumentFromAuth,
+    getCategoriesAndDocuments,
     onAuthStateChangedListener,
 } from "./utils/firebase/firebase.utils";
 
@@ -12,6 +13,7 @@ import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./components/checkout/checkout.component";
 import { setCurrentUser } from "./store/user/user.action";
+import { setCategoriesMap } from "./store/categories/category.action";
 
 const App = () => {
     const dispatch = useDispatch();
