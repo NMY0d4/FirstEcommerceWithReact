@@ -5,7 +5,6 @@ import {
     createUserDocumentFromAuth,
     onAuthStateChangedListener,
 } from "./utils/firebase/firebase.utils";
-import { createAction } from "./utils/reducer/reducer.utils";
 
 import Home from "./routes/home/home.component";
 import Nav from "./routes/nav/nav.component";

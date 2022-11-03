@@ -15,14 +15,14 @@ const INITIAL_STATE = {
     categoriesMap: {},
 };
 
-const CAT_ACTION_TYPE = {
-    SET_CATEGORY_MAP: "SET_CATEGORY_MAP",
+const CATEGORIES_ACTION_TYPE = {
+    SET_CATEGORIES_MAP: "SET_CATEGORIES_MAP",
 };
 
 const categoryReducer = (state, action) => {
     const { type, payload } = action;
     switch (type) {
-        case CAT_ACTION_TYPE.SET_CATEGORY_MAP:
+        case CATEGORIES_ACTION_TYPE.SET_CATEGORIES_MAP:
             return {
                 ...state,
                 categoriesMap: payload,
@@ -46,7 +46,10 @@ export const CategoriesProvider = ({ children }) => {
         const getCategoriesMap = async () => {
             const categoriesMap = await getCategoriesAndDocuments();
             dispatch(
-                createAction(CAT_ACTION_TYPE.SET_CATEGORY_MAP, categoriesMap)
+                createAction(
+                    CATEGORIES_ACTION_TYPE.SET_CATEGORY_MAP,
+                    categoriesMap
+                )
             );
         };
         getCategoriesMap();
