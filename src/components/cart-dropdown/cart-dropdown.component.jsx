@@ -8,14 +8,20 @@ import {
     CartItems,
 } from "./cart-dropdown.styles.jsx";
 import { setIsCartOpen } from "../../store/cart/cart.action";
-import { useSelector } from "react-redux";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    selectCartItems,
+    selectIsCartOpen,
+} from "../../store/cart/cart.selector";
 
 const CartDropdown = () => {
+    const dispatch = useDispatch();
     const cartItems = useSelector(selectCartItems);
+    const isCartOpen = useSelector(selectIsCartOpen);
     const navigate = useNavigate();
     const goToCheckoutHandler = () => {
         navigate("/checkout");
+        isCartOpen && dispatch(setIsCartOpen());
     };
     return (
         <CartDropdownContainer>
