@@ -10,12 +10,9 @@ import {
 } from "../../store/cart/cart.action";
 
 const CheckoutItem = ({ cartItem }) => {
-    // const { addItemToCart, removeItemFromCart, removeProductFromCart }
     const dispatch = useDispatch();
     const cartItems = useSelector(selectCartItems);
-
     const { name, imageUrl, quantity, price } = cartItem;
-
     const removeItemHandler = () =>
         dispatch(removeItemFromCart(cartItems, cartItem));
     const addItemHandler = () => dispatch(addItemtoCart(cartItems, cartItem));

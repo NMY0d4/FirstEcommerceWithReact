@@ -1,3 +1,4 @@
+//  ADD AN ITEM -----------------------------------------------------------
 export const addCartItem = (cartItems, ProductToAdd) => {
     // find if cartItems contains productToAdd
     const existingCartItem = cartItems.find(
@@ -17,6 +18,7 @@ export const addCartItem = (cartItems, ProductToAdd) => {
     return [...cartItems, { ...ProductToAdd, quantity: 1 }];
 };
 
+//  REMOVE AN ITEM ---------------------------------------------------------
 export const removeCartItem = (cartItems, cartItemToRemove) => {
     // find the cart item to remove
     const existingCartItem = cartItems.find(
@@ -39,5 +41,6 @@ export const removeCartItem = (cartItems, cartItemToRemove) => {
     );
 };
 
+//  REMOVE A PRODUCT---------------------------------------------------
 export const removeProductItem = (cartItems, cartProductToRemove) =>
     cartItems.filter((cartItem) => cartItem.id !== cartProductToRemove.id);

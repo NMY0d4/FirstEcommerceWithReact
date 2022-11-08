@@ -19,6 +19,7 @@ const CartDropdown = () => {
     const cartItems = useSelector(selectCartItems);
     const isCartOpen = useSelector(selectIsCartOpen);
     const navigate = useNavigate();
+
     const goToCheckoutHandler = () => {
         navigate("/checkout");
         isCartOpen && dispatch(setIsCartOpen());
