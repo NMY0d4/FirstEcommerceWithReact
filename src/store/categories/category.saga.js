@@ -14,6 +14,7 @@ export function* fetchCategoriesAsync() {
             getCategoriesAndDocuments,
             "categories"
         );
+
         yield put(fetchCategoriesSuccess(categoriesArray));
     } catch (error) {
         yield put(fetchCategoriesFailed(error));
