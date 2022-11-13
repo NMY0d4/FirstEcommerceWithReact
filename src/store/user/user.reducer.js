@@ -11,11 +11,13 @@ export const userReducer = (state = INITIAL_STATE, action) => {
 
     switch (type) {
         case USER_ACTION_TYPES.SIGN_IN_SUCCESS:
+            console.log("user SUCCSS");
             return {
                 ...state,
                 currentUser: payload,
             };
         case USER_ACTION_TYPES.SIGN_IN_FAILED:
+            console.log("user ERROR");
             return {
                 ...state,
                 error: payload,
