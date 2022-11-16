@@ -2,25 +2,32 @@ import { takeLatest, all, call, put } from "redux-saga/effects";
 
 import { USER_ACTION_TYPES } from "./user.types";
 
-import { signInSuccess, signInFailed } from "./user.action";
+import {
+    signInSuccess,
+    signInFailed,
+    signUpSuccess,
+    signUpFailed,
+    signOutSuccess,
+    signOutFailed,
+} from "./user.action";
 import {
     getCurrentUser,
     createUserDocumentFromAuth,
     createAuthUserWithEmailAndPassword,
     signInWithGooglePopup,
     signInAuthUserWithEmailAndPassword,
+    signOutUser,
 } from "../../utils/firebase/firebase.utils";
-import { signUpSuccess, signUpFailed } from "./user.action";
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
     try {
-        const userSnapshot = yield call(
+        const userSnapShot = yield call(
             createUserDocumentFromAuth,
             userAuth,
             additionalDetails
         );
         yield put(
-            signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() })
+            signInSuccess({ id: userSnapShot.id, ...userSnapShot.data() })
         );
     } catch (error) {
         yield put(signInFailed(error));
@@ -72,6 +79,15 @@ export function* signUp({ payload: { email, password, displayName } }) {
     }
 }
 
+export function* signOut() {
+    try {
+        yield call(signOutUser);
+        yield put(signOutSuccess());
+    } catch (error) {
+        yield put(signOutFailed(error));
+    }
+}
+
 export function* signInAfterSignUp({ payload: { user, additionalDetails } }) {
     yield call(getSnapshotFromUserAuth, user, additionalDetails);
 }
@@ -96,6 +112,10 @@ export function* onSignUpSuccess() {
     yield takeLatest(USER_ACTION_TYPES.SIGN_IN_SUCCESS, signInAfterSignUp);
 }
 
+export function* onSignOutStart() {
+    yield takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOut);
+}
+
 export function* userSaga() {
     yield all([
         call(onCheckUserSession),
@@ -103,5 +123,6 @@ export function* userSaga() {
         call(onEmailSignInStart),
         call(onSignUpStart),
         call(onSignUpSuccess),
+        call(onSignOutStart),
     ]);
 }
