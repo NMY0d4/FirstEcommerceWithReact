@@ -34,6 +34,16 @@ export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
     }
 }
 
+export function* isUserAuthenticated() {
+    try {
+        const userAuth = yield call(getCurrentUser);
+        if (!userAuth) return;
+        yield call(getSnapshotFromUserAuth, userAuth);
+    } catch (error) {
+        yield put(signInFailed(error));
+    }
+}
+
 export function* signInWithGoogle() {
     try {
         const { user } = yield call(signInWithGooglePopup);
@@ -51,16 +61,6 @@ export function* signInWithEmail({ payload: { email, password } }) {
             password
         );
         yield call(getSnapshotFromUserAuth, user);
-    } catch (error) {
-        yield put(signInFailed(error));
-    }
-}
-
-export function* isUserAuthenticated() {
-    try {
-        const userAuth = yield call(getCurrentUser);
-        if (!userAuth) return;
-        yield call(getSnapshotFromUserAuth, userAuth);
     } catch (error) {
         yield put(signInFailed(error));
     }
@@ -109,7 +109,7 @@ export function* onSignUpStart() {
 }
 
 export function* onSignUpSuccess() {
-    yield takeLatest(USER_ACTION_TYPES.SIGN_IN_SUCCESS, signInAfterSignUp);
+    yield takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
 export function* onSignOutStart() {
