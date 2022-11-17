@@ -7,10 +7,10 @@ import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
-    console.log(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
     const paymentHandler = async (e) => {
         e.preventDefault();
+
         if (!stripe || !elements) {
             return;
         }
@@ -26,7 +26,26 @@ const PaymentForm = () => {
             }
         ).then((res) => res.json());
 
-        console.log(response);
+        const {
+            paymentIntent: { client_secret },
+        } = response;
+
+        const paymentResult = await stripe.confirmCardPayment(client_secret, {
+            payment_method: {
+                card: elements.getElement(CardElement),
+                billing_details: {
+                    name: "Grégory Marini",
+                },
+            },
+        });
+
+        if (paymentResult.error) {
+            alert(paymentResult.error);
+        } else {
+            if (paymentResult.paymentIntent.status === "succeeded") {
+                alert("Payment successful");
+            }
+        }
     };
 
     return (
